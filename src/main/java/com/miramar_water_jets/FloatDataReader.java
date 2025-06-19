@@ -13,9 +13,6 @@ public class FloatDataReader implements Runnable {
     private int baudRate = 115200;
     private String data_end_limiter = "&%";
 
-    // microcontroller will stop after 3 seconds after not recieving data.
-    private int timeToGetData = 3000; // milliseconds
-
     private BlockingQueue<DataPoint> queue;
     private SerialPort commPort;
 
@@ -30,8 +27,6 @@ public class FloatDataReader implements Runnable {
         // TIMEOUT_NONBLOCKING
         // TIMEOUT_READ_SEMI_BLOCKING
         // TIMEOUT_READ_BLOCKING
-        // commPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_BLOCKING, timeToGetData,
-        // 0);
         commPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_BLOCKING, 0, 0);
     }
 
@@ -42,7 +37,6 @@ public class FloatDataReader implements Runnable {
         System.out.println("Running...");
 
         // check if connection is open
-        // ;
         if (!commPort.openPort()) {
             System.out.println("Comm port is not open");
             return;
@@ -54,20 +48,13 @@ public class FloatDataReader implements Runnable {
         int line = 1;
 
         try (BufferedReader datareader = new BufferedReader(new InputStreamReader(commPort.getInputStream()))) {
-            // if (commPort.getInputStream().available() > 0) {
             while ((dataline = datareader.readLine()) != null) {
                 String[] datapoint = dataline.split(",");
 
                 if (dataline.startsWith(data_end_limiter))
                     break;
 
-                if (!
-                // (datapoint[0].startsWith("PN0") ||
-
-                (datapoint[0].equals(data_end_limiter)))
-                // )
-                {
-
+                if (!(datapoint[0].equals(data_end_limiter))) {
                     System.out.println(line + ": " + dataline);
                     if (!datapoint[0].startsWith("PN"))
                         continue;
@@ -76,10 +63,8 @@ public class FloatDataReader implements Runnable {
                             datapoint[1], Double.parseDouble(datapoint[2]),
                             Double.parseDouble(datapoint[3])));
                 }
-
                 line++;
             }
-            // }
             datareader.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -89,6 +74,5 @@ public class FloatDataReader implements Runnable {
             e.printStackTrace();
         }
         commPort.closePort();
-        // }
     }
 }
