@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.ScatterChart?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1096.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miramar_water_jets.FloatDataPlotter">
+   <children>
+      <ScatterChart fx:id="scatterChart_1" prefHeight="640.0" prefWidth="861.0" title="Depth vs. Tine">
+        <xAxis>
+          <CategoryAxis label="Time (s)" side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis label="Depth (m)" side="LEFT" />
+        </yAxis>
+      </ScatterChart>
+      <ScrollPane fx:id="scrollPane" layoutX="874.0" layoutY="7.0" prefHeight="625.0" prefWidth="213.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
