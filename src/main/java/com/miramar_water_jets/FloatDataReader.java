@@ -13,9 +13,6 @@ public class FloatDataReader implements Runnable {
     private int baudRate = 115200;
     private String data_end_limiter = "&%";
 
-    // microcontroller will stop after 3 seconds after not recieving data.
-    private int timeToGetData = 3000; // milliseconds
-
     private BlockingQueue<DataPoint> queue;
     private SerialPort commPort;
 

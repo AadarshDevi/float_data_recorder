@@ -2,13 +2,15 @@
 
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.ScatterChart?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1096.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miramar_water_jets.FloatDataPlotter">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1131.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miramar_water_jets.FloatDataPlotter">
    <children>
-      <ScatterChart fx:id="scatterChart_1" alternativeRowFillVisible="false" prefHeight="640.0" prefWidth="861.0" title="Depth vs. Tine">
+      <ScatterChart fx:id="scatterChart_1" alternativeRowFillVisible="false" prefHeight="640.0" prefWidth="861.0" title="Depth vs. Time">
         <xAxis>
           <NumberAxis forceZeroInRange="false" label="Time (s)" side="BOTTOM" />
         </xAxis>
@@ -17,6 +19,11 @@
         </yAxis>
       </ScatterChart>
       <ListView fx:id="listView" layoutX="882.0" layoutY="16.0" prefHeight="608.0" prefWidth="200.0" visible="false" />
-      <TextArea fx:id="textArea" editable="false" layoutX="875.0" layoutY="13.0" prefHeight="608.0" prefWidth="207.0" />
+      <TextArea fx:id="textArea" editable="false" layoutX="875.0" layoutY="49.0" prefHeight="579.0" prefWidth="247.0" />
+      <Label alignment="CENTER" layoutX="875.0" layoutY="8.0" prefHeight="34.0" prefWidth="247.0" text="Data from Float">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
