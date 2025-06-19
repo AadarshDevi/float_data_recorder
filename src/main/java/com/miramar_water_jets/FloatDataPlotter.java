@@ -8,7 +8,6 @@ import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 
 public class FloatDataPlotter {
@@ -19,7 +18,6 @@ public class FloatDataPlotter {
 
     private BlockingQueue<DataPoint> queue = new LinkedBlockingQueue<>();
 
-    @FXML public ListView<DataLabel> listView;
     @SuppressWarnings("exports")
     @FXML public TextArea textArea;
 
@@ -59,8 +57,6 @@ public class FloatDataPlotter {
 
                     packet.getData().add(new XYChart.Data<>(dp.getTime(), dp.getDepth()));
                     textArea.setText(textArea.getText() + dp.toString() + "\n");
-                    System.out.println(dp.getId() + ": " + dp);
-
                 }
             }
         };
