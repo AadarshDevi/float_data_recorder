@@ -58,7 +58,7 @@ public class FloatDataPlotter {
                     }
 
                     packet.getData().add(new XYChart.Data<>(dp.getTime(), dp.getDepth()));
-                    textArea.setText(textArea.getText() + dp.getPacketId() + " :: " + dp.toString() + "\n");
+                    textArea.setText(textArea.getText() + dp.toString() + "\n");
                     System.out.println(dp.getId() + ": " + dp);
 
                 }
