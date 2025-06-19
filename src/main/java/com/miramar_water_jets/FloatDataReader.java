@@ -73,8 +73,8 @@ public class FloatDataReader implements Runnable {
                         continue;
 
                     queue.put(new DataPoint(line,
-                            datapoint[0], Double.parseDouble(datapoint[1]),
-                            Double.parseDouble(datapoint[2])));
+                            datapoint[1], Double.parseDouble(datapoint[2]),
+                            Double.parseDouble(datapoint[3])));
                 }
 
                 line++;

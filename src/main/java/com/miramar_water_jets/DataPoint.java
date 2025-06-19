@@ -31,6 +31,7 @@ public class DataPoint {
 
     @Override
     public String toString() {
-        return String.format("%fs, %fm", time, depth);
+        return "PN12-MiramarWaterJets," + packetId + ","
+                + String.format("%.3f,%.3f", time, depth);
     }
 }

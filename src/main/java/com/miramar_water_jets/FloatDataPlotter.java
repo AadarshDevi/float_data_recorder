@@ -17,9 +17,6 @@ public class FloatDataPlotter {
     private ArrayList<XYChart.Series<Double, Double>> graphs = new ArrayList<>();
     private int packetIdNum = 0;
 
-    // this contains the packet data
-    // private XYChart.Series<Double, Double> series_1 = new XYChart.Series<>();
-
     private BlockingQueue<DataPoint> queue = new LinkedBlockingQueue<>();
 
     @FXML public ListView<DataLabel> listView;
@@ -28,9 +25,6 @@ public class FloatDataPlotter {
 
     @FXML
     public void initialize() {
-
-        // scatterChart_1.getData().add(series_1);
-        // series_1.setName("DataSeries "+);
 
         FloatDataReader fdr = new FloatDataReader(queue);
         Thread fdrThread = new Thread(fdr);
@@ -47,26 +41,17 @@ public class FloatDataPlotter {
 
                 XYChart.Series<Double, Double> packet = null;
 
-                // System.out.println("Creating DataSet " + packetIdNum);
-                // packet = new XYChart.Series<>();
-                // packet.setName("DataSet " + packetIdNum);
-                // // lastPacketId = dp.getPacketId();
-                // graphs.add(packet);
-                // scatterChart_1.getData().add(packet);
-                // textArea.setText(textArea.getText() + "\nDataSet " + packetIdNum
-                // + "\n-----------------------------------\n");
-                // packetIdNum++;
-
                 while ((dp = queue.poll()) != null) {
-                    // series_1.getData().add(new XYChart.Data<>(dp.getTime(), dp.getDepth()));
 
                     if (!dp.getPacketId().equals(lastPacketId)) {
                         System.out.println("Creating DataSet " + packetIdNum);
                         packet = new XYChart.Series<>();
                         packet.setName("DataSet " + packetIdNum);
                         lastPacketId = dp.getPacketId();
-                        graphs.add(packet);
-                        scatterChart_1.getData().add(packet);
+                        if (!dp.getPacketId().equals("pkt0")) {
+                            graphs.add(packet);
+                            scatterChart_1.getData().add(packet);
+                        }
                         textArea.setText(textArea.getText() + "\nDataSet " + packetIdNum
                                 + "\n-----------------------------------\n");
                         packetIdNum++;
